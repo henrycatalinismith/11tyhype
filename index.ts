@@ -1,14 +1,26 @@
-const { Logger } = require("eazy-logger")
-const fs = require("fs")
-const rehype = require("rehype")
-const parse = require("rehype-parse")
-const stringify = require("rehype-stringify")
+import { Logger } from "eazy-logger"
+import fs from "fs"
+import rehype from "rehype"
+import parse from "rehype-parse"
+import stringify from "rehype-stringify"
+import unified from "unified/types/ts4.0/index"
+
+interface EleventyConfig {
+  addTransform: (
+    name: string,
+    fn: (content: string, path: string) => string
+  ) => void
+}
+
+interface Options {
+  plugins?: unified.Plugin<[], rehype.RehypeOptions>[]
+}
 
 const pkg = JSON.parse(fs.readFileSync(`${__dirname}/package.json`, "utf-8"))
 
-module.exports = {
+export const rehypePlugin = {
   initArguments: {},
-  configFunction: function(eleventyConfig, options) {
+  configFunction: function(eleventyConfig: EleventyConfig, options) {
     const logger = Logger({
       prefix: `[{blue:${pkg.name}}] `,
     })
@@ -22,7 +34,7 @@ module.exports = {
 
     eleventyConfig.addTransform(
       pkg.name,
-      function(content, outputPath) {
+      function(content: string, outputPath: string): string {
         if (outputPath && outputPath.endsWith(".html")) {
           content = processor.processSync(content).toString()
           logger.info(`transformed {green:${outputPath}}`)
