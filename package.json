@@ -1,0 +1,29 @@
+{
+  "name": "@hendotcat/11tyhype",
+  "description": "Rehype plugin for 11ty",
+  "version": "0.0.1",
+  "license": "MIT",
+  "author": {
+    "name": "Henry Catalini Smith",
+    "email": "hen@hey.com",
+    "url": "https://hen.cat/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hendotcat/11tyhype.git"
+  },
+  "dependencies": {
+    "eazy-logger": "3.1.0"
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "^0.12.1",
+    "rehype": "^11.0.0"
+  },
+  "peerDependencies": {
+    "@11ty/eleventy": "^0.12.1"
+  },
+  "scripts": {},
+  "files": [
+    "index.js"
+  ]
+}
