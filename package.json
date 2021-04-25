@@ -1,7 +1,7 @@
 {
   "name": "@hendotcat/11tyhype",
   "description": "Rehype plugin for 11ty",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "license": "MIT",
   "author": {
     "name": "Henry Catalini Smith",
