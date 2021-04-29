@@ -1,5 +1,4 @@
 import { Logger } from "eazy-logger"
-import fs from "fs"
 import rehype from "rehype"
 import unified from "unified/types/ts4.0/index"
 import { name, version } from "./package.json"
@@ -19,7 +18,10 @@ interface Options {
 
 export const rehypePlugin = {
   initArguments: {},
-  configFunction: function(eleventyConfig: EleventyConfig, options) {
+  configFunction: function(
+    eleventyConfig: EleventyConfig,
+    options: Options,
+  ) {
     const logger = Logger({
       prefix: `[{blue:${name}}@{blue:${version}}] `,
     })
@@ -30,15 +32,17 @@ export const rehypePlugin = {
     })
 
     if (!options.id) {
-      options.id = Math.ceil(Math.random() * 9999)
+      options.id = Math.ceil(Math.random() * 9999).toString()
     }
 
     if (!options.verbose) {
       logger.info = () => {}
     }
 
+    const transformName = `${name}:${options.id}`
+
     eleventyConfig.addTransform(
-      `${name}:${options.id}`,
+      transformName,
       function(content: string, outputPath: string): string {
         if (outputPath && outputPath.endsWith(".html")) {
 
@@ -47,7 +51,12 @@ export const rehypePlugin = {
           const end = process.hrtime(start)
           const time = Math.ceil(end[0] * 1e9 + end[1] / 1e6)
 
-          logger.info(`transformed {green:${outputPath}} [{magenta:${time}ms}]`)
+          logger.info([
+            "transformed",
+            `{green:${outputPath}}`,
+            `[{magenta:${time}ms}]`,
+            `[{magenta:${name}}]`,
+          ].join(" "))
         }
         return content
       }
