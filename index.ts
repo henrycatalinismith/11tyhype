@@ -12,7 +12,9 @@ interface EleventyConfig {
 }
 
 interface Options {
+  id?: string
   plugins?: unified.Plugin<[], rehype.RehypeOptions>[]
+  verbose?: boolean
 }
 
 export const rehypePlugin = {
@@ -27,8 +29,16 @@ export const rehypePlugin = {
       processor.use.apply(processor, plugin)
     })
 
+    if (!options.id) {
+      options.id = Math.ceil(Math.random() * 9999)
+    }
+
+    if (!options.verbose) {
+      logger.info = () => {}
+    }
+
     eleventyConfig.addTransform(
-      name,
+      `${name}:${options.id}`,
       function(content: string, outputPath: string): string {
         if (outputPath && outputPath.endsWith(".html")) {
 
