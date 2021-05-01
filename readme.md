@@ -78,6 +78,8 @@ module.exports = function(eleventyConfig) {
 }
 ```
 
+### `id`
+
 ### `verbose`
 
 Pass `verbose: true` to the plugin and it'll output a whole bunch of
