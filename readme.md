@@ -94,11 +94,11 @@ enable this this option if you're reporting a bug in 11tyhype.
 
 ## License
 
-MIT
+[MIT]
 
 [11ty]: https://www.11ty.dev
 [rehype]: https://github.com/rehypejs/rehype
 [rehype-minify-whitespace]: https://github.com/rehypejs/rehype-minify/tree/main/packages/rehype-minify-whitespace
 [rehype-urls]: https://github.com/brechtcs/rehype-urls
 [use]: https://github.com/unifiedjs/unified#processoruseplugin-options
-
+[MIT]: https://opensource.org/licenses/MIT
