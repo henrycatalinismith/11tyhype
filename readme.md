@@ -101,4 +101,5 @@ enable this this option if you're reporting a bug in 11tyhype.
 [rehype-minify-whitespace]: https://github.com/rehypejs/rehype-minify/tree/main/packages/rehype-minify-whitespace
 [rehype-urls]: https://github.com/brechtcs/rehype-urls
 [use]: https://github.com/unifiedjs/unified#processoruseplugin-options
+[Contributor Covenant v2.0]: https://www.contributor-covenant.org/version/2/0/code_of_conduct
 [MIT]: https://opensource.org/licenses/MIT
