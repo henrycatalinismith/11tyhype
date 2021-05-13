@@ -1,12 +1,12 @@
 import { Logger } from "eazy-logger"
 import rehype from "rehype"
 import unified from "unified/types/ts4.0/index"
-import { name, version } from "./package.json"
+import { name, version, homepage } from "./package.json"
 
 interface EleventyConfig {
   addTransform: (
     name: string,
-    fn: (content: string, path: string) => string
+    fn: (content: string, path: string) => Promise<string>
   ) => void
 }
 
@@ -26,10 +26,23 @@ export const rehypePlugin = {
       prefix: `[{blue:${name}}@{blue:${version}}] `,
     })
 
-    const processor = rehype()
-    ;(options.plugins || []).forEach(plugin => {
-      processor.use.apply(processor, plugin)
-    })
+    if (!options || !options.plugins) {
+      logger.error("{red:error: no-plugins}")
+      logger.error("{red:missing a list of rehype plugins to apply}")
+      logger.error("{red:for more details, see:}")
+      logger.error(`{red:${homepage}/#no-plugins}`)
+      process.exit(-1)
+    }
+
+    for (const i in options.plugins) {
+      if (typeof options.plugins[i][0] !== "function") {
+        logger.error("{red:error: invalid-plugin}")
+        logger.error(`{red:plugin #${i+1} is invalid}`)
+        logger.error("{red:for more details, see:}")
+        logger.error(`{red:${homepage}/#invalid-plugin}`)
+        process.exit(-1)
+      }
+    }
 
     if (!options.id) {
       options.id = Math.ceil(Math.random() * 9999).toString()
@@ -39,15 +52,20 @@ export const rehypePlugin = {
       logger.info = () => {}
     }
 
+    const processor = rehype()
+    options.plugins.forEach(plugin => {
+      processor.use.apply(processor, plugin)
+    })
+
     const transformName = `${name}:${options.id}`
 
     eleventyConfig.addTransform(
       transformName,
-      function(content: string, outputPath: string): string {
+      async function(content: string, outputPath: string): Promise<string> {
         if (outputPath && outputPath.endsWith(".html")) {
 
           const start = process.hrtime()
-          content = processor.processSync(content).toString()
+          content = await processor.process(content).toString()
           const end = process.hrtime(start)
           const time = Math.ceil(end[0] * 1e9 + end[1] / 1e6)
 
