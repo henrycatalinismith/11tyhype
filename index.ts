@@ -62,21 +62,25 @@ export const rehypePlugin = {
     eleventyConfig.addTransform(
       transformName,
       async function(content: string, outputPath: string): Promise<string> {
-        if (outputPath && outputPath.endsWith(".html")) {
-
-          const start = process.hrtime()
-          content = await processor.process(content).toString()
-          const end = process.hrtime(start)
-          const time = Math.ceil(end[0] * 1e9 + end[1] / 1e6)
-
-          logger.info([
-            "transformed",
-            `{green:${outputPath}}`,
-            `[{magenta:${time}ms}]`,
-            `[{magenta:${name}}]`,
-          ].join(" "))
-        }
-        return content
+        return new Promise((resolve) => {
+          if (outputPath && outputPath.endsWith(".html")) {
+            const start = process.hrtime()
+            processor.process(content).then((vfile) => {
+              content = vfile.toString()
+              const end = process.hrtime(start)
+              const time = Math.ceil(end[0] * 1e9 + end[1] / 1e6)
+              logger.info([
+                "transformed",
+                `{green:${outputPath}}`,
+                `[{magenta:${time}ms}]`,
+                `[{magenta:${name}}]`,
+              ].join(" "))
+              resolve(content)
+            })
+          } else {
+            resolve(content)
+          }
+        })
       }
     )
   }
