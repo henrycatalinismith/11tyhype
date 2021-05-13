@@ -26,7 +26,7 @@ Eleventy site with less boilerplate.
 ## Installation
 
 ```
-yarn add -D @hendotcat/11tyhype
+yarn add -D @hendotcat/11tyhype rehype
 ```
 
 ## Usage

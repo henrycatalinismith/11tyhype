@@ -1,7 +1,7 @@
 {
   "name": "@hendotcat/11tyhype",
   "description": "Rehype plugin for 11ty",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "license": "MIT",
   "homepage": "https://github.com/hendotcat/11tyhype",
   "author": {
@@ -23,7 +23,8 @@
     "typescript": "^4.2.4"
   },
   "peerDependencies": {
-    "@11ty/eleventy": "^0.12.1"
+    "@11ty/eleventy": "^0.12.1",
+    "rehype": "^11.0.0"
   },
   "scripts": {
     "build": "tsc",
