@@ -80,11 +80,42 @@ module.exports = function(eleventyConfig) {
 
 ### `id`
 
+If you have a lot of transforms in your Eleventy build then naming them can be
+helpful for debugging build problems. So you can optionally pass an `id` string to
+11tyhype and it'll use this value as the name for the transform.
+
 ### `verbose`
 
 Pass `verbose: true` to the plugin and it'll output a whole bunch of
 information about what it's doing. This is mostly useful for debugging. Please
 enable this this option if you're reporting a bug in 11tyhype.
+
+## Error Codes
+
+11tyhype will try to help you set it up properly. If you make a mistake,
+it'll try to help you understand. For some mistakes that it can recognize,
+it'll print a link in the build output pointing at one of these error codes to
+help you troubleshoot.
+
+### `no-plugins`
+
+This error code is generated when you add the plugin to Eleventy without giving
+it any rehype plugins to apply.
+
+Double check your code against the example at the top of this readme. The
+second argument you pass to `eleventyConfig.addPlugin` should be an object with
+a property called `plugins`.
+
+### `invalid-plugin`
+
+This error code is generated when you add the plugin to Eleventy with a mistake
+in the list of `plugins`. The error message will tell you which plugin in your
+list has the mistake: e.g. if it says `plugin #1 is invalid` then the very first
+plugin in your list is the one that's wrong.
+
+Read the [instructions for the `plugins` option](#plugins) and check that the
+plugin specified by the error message has a rehype plugin function as its first
+array element.
 
 ## Contributing
 
