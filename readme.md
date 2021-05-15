@@ -31,16 +31,20 @@ yarn add -D @hendotcat/11tyhype rehype
 
 ## Usage
 
-This example uses [`rehype-minify-whitespace`][rehype-minify-whitespace] to
-strip out all the whitespace from the HTML of an Eleventy site.
+This example uses [`rehype-accessible-emojis`][rehype-accessible-emojis] to
+improve emoji accessibility and
+[`rehype-minify-whitespace`][rehype-minify-whitespace] to strip out all the
+whitespace from the HTML of an Eleventy site.
 
 ```javascript
 const { rehypePlugin } = require("@hendotcat/11tyhype")
+const accessibleEmojis = require("rehype-accessible-emojis")
 const minifyWhitespace = require("rehype-minify-whitespace")
 
 module.exports = function(eleventyConfig) {
   eleventyConfig.addPlugin(rehypePlugin, {
     plugins: [
+      [accessibleEmojis],
       [minifyWhitespace],
     ]
   })
@@ -129,6 +133,7 @@ array element.
 [11ty]: https://www.11ty.dev
 [rehype]: https://github.com/rehypejs/rehype
 [rehype-minify-whitespace]: https://github.com/rehypejs/rehype-minify/tree/main/packages/rehype-minify-whitespace
+[rehype-accessible-emojis]: https://github.com/GaiAma/Coding4GaiAma/tree/HEAD/packages/rehype-accessible-emojis
 [rehype-urls]: https://github.com/brechtcs/rehype-urls
 [use]: https://github.com/unifiedjs/unified#processoruseplugin-options
 [Contributing]: https://github.com/hendotcat/11tyhype/blob/trunk/contributing.md
