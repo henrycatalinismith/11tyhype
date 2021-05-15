@@ -1,7 +1,7 @@
 {
   "name": "@hendotcat/11tyhype",
   "description": "Rehype plugin for 11ty",
-  "version": "1.0.2",
+  "version": "2.0.0",
   "license": "MIT",
   "homepage": "https://github.com/hendotcat/11tyhype",
   "author": {
@@ -31,8 +31,9 @@
     "watch": "tsc --watch"
   },
   "files": [
-    "index.d.ts",
-    "index.js"
+    "11tyhype.d.ts",
+    "11tyhype.js"
   ],
-  "types": "index.d.ts"
+  "main": "11tyhype.js",
+  "types": "11tyhype.d.ts"
 }
