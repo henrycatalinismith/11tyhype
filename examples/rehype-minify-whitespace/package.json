@@ -1,0 +1,7 @@
+{
+  "dependencies": {
+    "@11ty/eleventy": "^0.12.1",
+    "rehype": "^11.0.0",
+    "rehype-minify-whitespace": "^4.0.5"
+  }
+}
