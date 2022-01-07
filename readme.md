@@ -26,7 +26,7 @@ Eleventy site with less boilerplate.
 ## Installation
 
 ```
-yarn add -D @hendotcat/11tyhype rehype
+yarn add -D @henrycatalinismith/11tyhype rehype
 ```
 
 ## Usage
@@ -37,7 +37,7 @@ improve emoji accessibility and
 whitespace from the HTML of an Eleventy site.
 
 ```javascript
-const { rehypePlugin } = require("@hendotcat/11tyhype")
+const { rehypePlugin } = require("@henrycatalinismith/11tyhype")
 const accessibleEmojis = require("rehype-accessible-emojis")
 const minifyWhitespace = require("rehype-minify-whitespace")
 
@@ -68,7 +68,7 @@ It's using [`rehype-urls`][rehype-urls], and the second parameter tells the
 plugin to prefix every URL it finds with `https://example.org/`.
 
 ```
-const { rehypePlugin } = require("@hendotcat/11tyhype")
+const { rehypePlugin } = require("@henrycatalinismith/11tyhype")
 const urls = require("rehype-urls")
 
 module.exports = function(eleventyConfig) {
