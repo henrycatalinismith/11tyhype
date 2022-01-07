@@ -1,7 +1,7 @@
 <p align="center">
   <img
     alt="11tyhype"
-    src="https://github.com/hendotcat/11tyhype/raw/trunk/11tyhype.svg"
+    src="https://github.com/henrycatalinismith/11tyhype/raw/trunk/11tyhype.svg"
     height="64"
   />
 </p>
@@ -14,7 +14,7 @@
 
 <p align="center">
   <img
-    src="https://github.com/hendotcat/11tyhype/actions/workflows/publish.yml/badge.svg"
+    src="https://github.com/henrycatalinismith/11tyhype/actions/workflows/publish.yml/badge.svg"
     alt="Build status"
   />
 </p>
@@ -136,6 +136,6 @@ array element.
 [rehype-accessible-emojis]: https://github.com/GaiAma/Coding4GaiAma/tree/HEAD/packages/rehype-accessible-emojis
 [rehype-urls]: https://github.com/brechtcs/rehype-urls
 [use]: https://github.com/unifiedjs/unified#processoruseplugin-options
-[Contributing]: https://github.com/hendotcat/11tyhype/blob/trunk/contributing.md
-[Code of Conduct]: https://github.com/hendotcat/11tyhype/blob/trunk/code_of_conduct.md
-[MIT]: https://github.com/hendotcat/11tyhype/blob/trunk/license
+[Contributing]: https://github.com/henrycatalinismith/11tyhype/blob/trunk/contributing.md
+[Code of Conduct]: https://github.com/henrycatalinismith/11tyhype/blob/trunk/code_of_conduct.md
+[MIT]: https://github.com/henrycatalinismith/11tyhype/blob/trunk/license
